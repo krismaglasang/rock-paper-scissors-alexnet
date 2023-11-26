@@ -28,6 +28,10 @@ def inference_fn(raw_img):
     return prediction
 
 with gr.Blocks() as demo:
+    gr.Markdown("<p style='text-align:center; font-size:24px; font-weight:bold;'>Image Classification using Transfer Learning</p>")
+    gr.Markdown("<p style='text-align:left; font-size:15px;'>Transfer learning using AlexNet trained on the rock-paper-scissors dataset curated by Laurence Moroney.</p>")
+    gr.Markdown("<p style='text-align:left; font-size:15px;'>Note: This model sucks. It was trained only against 3D generated images, and can't even get some of those right. Also, \
+                if you want to test it out, make sure to only use PIL or PNG image formats. Gradio (or at least I think the issue is with Gradio) craps out if you feed it JPEG.</p>")
     gr.Interface(
         fn=inference_fn,
         inputs=gr.Image(type='pil'),
